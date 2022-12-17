@@ -1,13 +1,20 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './card.css'
-import house from '../../images/movie.jpg'
+import movie from '../../images/movie.jpg'
+import MovieModal from '../Modal/MovieModal.jsx'
 
-export default function Card() {
+export default function Card(props) {
+  const [showModal, setShowModal] = useState(false)
+
+  const toggleModal = () => {
+    setShowModal(!showModal)
+  }
+
   return (
-    <div className='card' onClick={() => {}}>
+    <div className='card' onClick={toggleModal}>
         <img
         className='cardImg'
-        src={house}
+        src={movie}
         alt=''
         />
         <div className='cardInfo'>
@@ -15,6 +22,7 @@ export default function Card() {
                 The Unholy
             </div>
         </div>
+        <MovieModal showModal={showModal} toggleModal={toggleModal} />
     </div>
   )
 }
