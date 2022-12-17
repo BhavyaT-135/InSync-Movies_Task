@@ -1,6 +1,6 @@
 import React from 'react'
 import './moviemodal.css'
-import unkown from '../../images/unknown.jpg'
+import unknown from '../../images/unknown.jpg'
 
 const MovieModal = (props) => {
   return (
@@ -12,7 +12,7 @@ const MovieModal = (props) => {
               </div>
               <div className="modalDivider"></div>
               <div className="modalBody">
-                  <img className="modalImage" src={props.poster_path ? `https://image.tmdb.org/t/p/w500/${props.poster_path}` : unkown} alt="Movie Thumbnail"></img>
+                  <img className="modalImage" src={props.poster_path ? `https://image.tmdb.org/t/p/w500/${props.poster_path}` : unknown} alt="Movie Thumbnail"></img>
                   <div className="modalDescription">
                       <div className="modalDescriptionTitle">Release Date : </div>
                       <div className="modalDescriptionText">{props.movie.release_date}</div>

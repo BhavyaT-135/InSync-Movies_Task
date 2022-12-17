@@ -6,6 +6,7 @@ import axios from 'axios'
 
 function App() {
   const [movies, setMovies] = useState([])
+  const [searchTitle, setSearchTitle] = useState()
   //Getting data from the api using useEffect
   useEffect(() => {
     const getMovies = async () => {
@@ -22,9 +23,9 @@ function App() {
   }, [])
   return (
     <Router>
-      <TopBar movies={movies} setMovies={setMovies} />
+      <TopBar movies={movies} setMovies={setMovies} setSearchTitle={setSearchTitle} />
         <Routes>
-        <Route exact path="/" element={<Home movies={movies} />} />
+        <Route exact path="/" element={<Home movies={movies} searchTitle={searchTitle} />} />
         </Routes>
       </Router>
   );

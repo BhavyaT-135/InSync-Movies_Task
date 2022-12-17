@@ -6,7 +6,7 @@ export default function Home(props) {
   return (
     <div className="home">
       <div className="homeHeadingContainer">
-        <div className='homeHeading'>Most Recent Movies</div>   
+        <div className='homeHeading'>{props.searchTitle ? `${props.searchTitle}` : "Most Recent Movies"}</div>   
       </div>
       <div className='cards'>
         {props.movies.map((movie) => (

@@ -15,6 +15,8 @@ export default function TopBar(props) {
           if (response.data.results.length !== 0) {
             console.log(response.data.results)
             props.setMovies(response.data.results)
+            props.setSearchTitle(search)
+            setSearch('')
           }
           else {
             console.log('No results found')
@@ -24,6 +26,9 @@ export default function TopBar(props) {
         .catch((error) => {
           console.log(error)
         })
+    }
+    else {
+      alert('Please enter a movie title')
     }
   }
   return (
