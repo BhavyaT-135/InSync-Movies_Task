@@ -1,27 +1,25 @@
 import React from 'react'
 import './moviemodal.css'
-import movie from '../../images/movie.jpg'
+import unkown from '../../images/unknown.jpg'
 
 const MovieModal = (props) => {
   return (
         <div className="modal" style={{display: props.showModal ? 'block' : 'none'}}>
             <div className="modalContent">
               <div className="modalHeader">
-                  <div className="modalTitle"> The Unholy</div>
+                  <div className="modalTitle">{props.movie.title}</div>
                   <i className="closeModal fas fa-times" onClick={props.toggleModal}></i>
               </div>
               <div className="modalDivider"></div>
               <div className="modalBody">
-                  <img className="modalImage" src={movie} alt="Movie Thumbnail"></img>
+                  <img className="modalImage" src={props.poster_path ? `https://image.tmdb.org/t/p/w500/${props.poster_path}` : unkown} alt="Movie Thumbnail"></img>
                   <div className="modalDescription">
                       <div className="modalDescriptionTitle">Release Date : </div>
-                      <div className="modalDescriptionText">2 April 2021</div>
-                      <div className="modalDescriptionTitle">Director : </div>
-                      <div className="modalDescriptionText">Evan Spiliotopoulos</div>
-                      <div className="modalDescriptionTitle">IMDB Rating : </div>
-                      <div className="modalDescriptionText">5.1</div>
-                      <div className="modalDescriptionTitle">Introduction : </div>
-                      <div className="modalDescriptionText">Alice, a girl with hearing impairment, is able to hear, speak and even heal the ill after having visions of the Virgin Mary. But when a journalist probes into the matter, he unearths a conspiracy.</div>
+                      <div className="modalDescriptionText">{props.movie.release_date}</div>
+                      <div className="modalDescriptionTitle">Overview : </div>
+                      <div className="modalDescriptionText">{props.movie.overview}</div>
+                      <div className="modalDescriptionTitle">Rating : </div>
+                      <div className="modalDescriptionText">{Math.round(props.movie.vote_average*10)/10} / 10 ({props.movie.vote_count} total votes)</div>
                   </div>
               </div>
             </div>

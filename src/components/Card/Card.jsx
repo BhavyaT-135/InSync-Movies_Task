@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import './card.css'
-import movie from '../../images/movie.jpg'
 import MovieModal from '../Modal/MovieModal.jsx'
+import unkown from '../../images/unknown.jpg'
 
 export default function Card(props) {
   const [showModal, setShowModal] = useState(false)
@@ -10,19 +10,21 @@ export default function Card(props) {
     setShowModal(!showModal)
   }
 
+  const poster_path = props.movie.poster_path
+
   return (
     <div className='card' onClick={toggleModal}>
         <img
         className='cardImg'
-        src={movie}
-        alt=''
+        src={poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}` : unkown}
+        alt='Movie Poster'
         />
         <div className='cardInfo'>
             <div className='cardTitle'>
-                The Unholy
+                {props.movie.title}
             </div>
         </div>
-        <MovieModal showModal={showModal} toggleModal={toggleModal} />
+      <MovieModal poster_path={poster_path} movie={props.movie} showModal={showModal} toggleModal={toggleModal} />
     </div>
   )
 }
